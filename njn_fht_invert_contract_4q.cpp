@@ -19,7 +19,7 @@
 #include <getopt.h>
 
 #ifdef HAVE_LHPC_AFF
-#include "lhpc-aff.h"
+#include "/qbigwork2/beilschmidt/code/aff/lib/lhpc-aff.h"
 #endif
 
 #ifdef __cplusplus
