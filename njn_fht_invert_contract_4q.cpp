@@ -28,7 +28,7 @@ extern "C"
 #endif
 
 #  ifdef HAVE_TMLQCD_LIBWRAPPER
-#    include "tmLQCD.h"
+#    include "/hadron/petschlies/software/tmLQCD_main/include/tmLQCD.h"
 #  endif
 
 #ifdef __cplusplus
