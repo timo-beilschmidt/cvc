@@ -5,6 +5,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <fstream>
 #include <string.h>
 #include <math.h>
 #include <time.h>
@@ -88,6 +89,55 @@ int read_input (char *filename) {
   return(0);
 }
 
+void read_matrix(double **data, std::string path, int sc1, int sc2){
+    //needs data to be initialized beforehand by double** data = new double *[sc1]
+    std::string line;
+    double token;
+    std::ifstream myfile(path);
+    for (int i = 0; i < (sc1); ++i) {
+        data[i] = new double[sc2];
+        for (int j = 0; j < sc2; ++j) {
+            myfile >> data[i][j];
+        }
+    }
+    myfile.close();
+
+}
+
+void spinor_field_eq_loop_ti_spinor_field(double *r, double **l, double *s, unsigned int N){
+    unsigned int ix, offset;
+    double *rr, *ss;
+    if(r != s) {
+      #ifdef HAVE_OPENMP
+      #pragma omp parallel for private(ix,offset,rr,ss) shared(r,l,s,N)
+      #endif
+      for(ix = 0; ix < N; ix++ ) {
+        offset = _GSI(ix);
+        rr = r + offset;
+        ss = s + offset;
+        _fv_eq_loop_ti_fv(rr, l, ss);
+      }
+    } else {
+      #ifdef HAVE_OPENMP
+      #pragma omp parallel private(ix,offset,rr,ss) shared(r,l,s,N)
+      {
+      #endif
+          double spinor1[24];
+      #ifdef HAVE_OPENMP
+      #pragma omp for 
+      #endif
+          for(ix = 0; ix < N; ix++ ) {
+            offset = _GSI(ix);
+            rr = r + offset;
+            ss = s + offset;
+            _fv_eq_loop_ti_fv(spinor1, l, ss);
+            _fv_eq_fv(rr, spinor1);
+          }
+      #ifdef HAVE_OPENMP
+      }  /* end of parallel region */
+      #endif
+    }
+}
 
 /*****************************************************
  * allocate gauge field
