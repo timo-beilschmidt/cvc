@@ -27,7 +27,7 @@
 extern "C"
 {
 #endif
-#include "lime.h" 
+#include "/qbigwork2/beilschmidt/code/c-lime/include/lime.h" 
 #ifdef HAVE_LIBLEMON
 #include "lemon.h"
 #endif
