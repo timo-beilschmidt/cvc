@@ -2,16 +2,16 @@
 #define _IFFTW_H
 
 #ifdef HAVE_MPI
-#  include "fftw_mpi.h"
+#  include "/qbigwork2/petschlies/software/FFTW/fftw-2.1.5/build.qbig.openmpi/include/fftw_mpi.h"
 #  ifdef HAVE_OPENMP
-#    include "fftw_threads.h"
+#    include "/qbigwork2/petschlies/software/FFTW/fftw-2.1.5/build.qbig.openmpi/include/fftw_threads.h"
 #  endif
 #else
 #  ifdef HAVE_OPENMP
-#    include "fftw_threads.h"
-#    include "fftw.h"
+#    include "/qbigwork2/petschlies/software/FFTW/fftw-2.1.5/build.qbig.openmpi/include/fftw_threads.h"
+#    include "/qbigwork2/petschlies/software/FFTW/fftw-2.1.5/build.qbig.openmpi/include/fftw.h"
 #  else
-#    include "fftw.h"
+#    include "/qbigwork2/petschlies/software/FFTW/fftw-2.1.5/build.qbig.openmpi/include/fftw.h"
 #  endif
 #endif
 
