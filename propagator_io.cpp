@@ -29,7 +29,7 @@ extern "C"
 #endif
 #include "/qbigwork2/beilschmidt/code/c-lime/include/lime.h" 
 #ifdef HAVE_LIBLEMON
-#include "lemon.h"
+#include "/qbigwork2/petschlies/software/LEMON/build.qbig/include/lemon.h"
 #endif
 #ifdef __cplusplus
 }
