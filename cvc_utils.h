@@ -9,8 +9,8 @@
 namespace cvc {
 
 int read_input (char *filename);
-void read_matrix(double **data, std::string path, int sc1, int sc2)
-void spinor_field_eq_loop_ti_spinor_field(double *r, double **l, double *s, unsigned int N)
+void read_matrix(double **data, std::string path, int sc1, int sc2);
+void spinor_field_eq_loop_ti_spinor_field(double *r, double **l, double *s, unsigned int N);
 int alloc_gauge_field(double **gauge, const int V);
 int alloc_gauge_field_dbl(double **gauge, const int N);
 int alloc_gauge_field_flt(float **gauge, const int N);
